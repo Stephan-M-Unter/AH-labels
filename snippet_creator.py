@@ -194,7 +194,7 @@ def process_annotations():
         if image_path.startswith("./"):
             # relative path, starting in the annotation folder
             image_path = annotations_folder + image_path[image_path.find('/')+1:]
-        elif image.path.startswith("../"):
+        elif image_path.startswith("../"):
             # relative path, but starts in some folder above annotation folder
             image_path = annotations_folder + image_path[image_path.rfind("../")+1:]
         # in other cases, the image_path already was an absolute path and nothing has to be changed
