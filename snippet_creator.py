@@ -18,7 +18,7 @@
                             3) change folder structure between "labels first" and "annotations first" mode
 '''
 
-import sys, os, json
+import sys, os, json, io, base64
 import tkinter as tk
 from tkinter import filedialog
 import numpy as np
@@ -217,7 +217,11 @@ def process_annotations():
 
         # open original image
         dpi = (96,96)
-        image = Image.open(image_path).convert("RGBA")
+        if (data['imageData']):
+            buffer = io.ByteIO(base64.b64decode(data['imageData']))
+            image = Image.open(buffer)
+        else:
+            image = Image.open(image_path).convert("RGBA")
         try:
             dpi = image.info['dpi']
             print(f"DPI in original image: {dpi}")
