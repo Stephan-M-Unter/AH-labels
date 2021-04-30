@@ -150,7 +150,7 @@ def process_annotations():
         if "content.txt" in os.listdir(snippet_folder):
             os.remove(snippet_folder+"content.txt")
         # write new content file
-        with open(snippet_folder+"content.txt", "w") as f:
+        with open(snippet_folder+"content.txt", "w", encoding='utf-8') as f:
             f.write("Snippets have been generated from following annotation files:\n")
             f.write("\n")
             for file in files:
